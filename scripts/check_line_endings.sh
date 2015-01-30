@@ -12,10 +12,10 @@
 if [[ $1 == "csv" ]]
 then
     # echo "checking all csv files"
-    BAD_ENDINGS=$(find data -name '*.csv' -print0 | xargs -0 grep -l $'\r$')
+    BAD_ENDINGS=$(find data -name '*.csv' -print0 | xargs -0 grep -l $'\r')
 else
     # echo "checking index"
-    BAD_ENDINGS=$(git diff-index --cached -S$'\r$' --name-only HEAD)
+    BAD_ENDINGS=$(git diff-index --cached -S$'\r' --name-only HEAD)
 fi
 
 if test -z "$BAD_ENDINGS"
